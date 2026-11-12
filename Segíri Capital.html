@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Segíri Capital | Venture studio, advisory and venture capital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@400;500;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05241a;
+      --bg2: #083222;
+      --ink: #ffffff;
+      --mute: #a9c2b4;
+      --lime: #b6d63f;
+      --line: rgba(182, 214, 63, .28);
+      --on-lime: #05241a;
+      --head: "Inter", "Helvetica Neue", Arial, sans-serif;
+      --body: "Jost", "Futura", "Century Gothic", sans-serif;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg: #f3f6ea;
+        --bg2: #e7eed3;
+        --ink: #05241a;
+        --mute: #3f5a4c;
+        --lime: #5f7d0c;
+        --line: rgba(5, 36, 26, .25);
+        --on-lime: #ffffff
+      }
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f3f6ea;
+      --bg2: #e7eed3;
+      --ink: #05241a;
+      --mute: #3f5a4c;
+      --lime: #5f7d0c;
+      --line: rgba(5, 36, 26, .25);
+      --on-lime: #ffffff
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit
+    }
+
+    html {
+      height: 100%;
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 18px/1.6 var(--body);
+      -webkit-font-smoothing: antialiased
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 0 auto;
+      height: env(safe-area-inset-top, 0px);
+      background: var(--bg);
+      z-index: 10
+    }
+
+    a {
+      color: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 28px
+    }
+
+    header {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 9;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line)
+    }
+
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none
+    }
+
+    .logo svg {
+      width: 34px;
+      height: 34px;
+      color: var(--lime)
+    }
+
+    .word {
+      font: 900 24px/1 var(--head);
+      letter-spacing: -.04em
+    }
+
+    .word small {
+      display: block;
+      font: 400 11px/1 var(--body);
+      letter-spacing: .18em;
+      color: var(--lime);
+      text-align: right;
+      margin-top: 3px
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 16px;
+      align-items: center
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--mute)
+    }
+
+    nav a:hover {
+      color: var(--ink)
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--on-lime);
+      padding: 14px 26px;
+      font: 500 17px/1 var(--body);
+      text-decoration: none;
+      border-radius: 999px
+    }
+
+    nav a.btn {
+      color: var(--on-lime);
+      padding: 11px 20px;
+      font-size: 16px
+    }
+
+    .btn:hover {
+      filter: brightness(1.08)
+    }
+
+    .btn.ghost {
+      background: none;
+      color: var(--ink);
+      border: 1px solid var(--line)
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--lime)
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 110px 0 120px
+    }
+
+    .hero h1 {
+      font: 900 clamp(48px, 8.4vw, 112px)/.95 var(--head);
+      letter-spacing: -.045em;
+      margin: 0 0 28px;
+      max-width: 11ch
+    }
+
+    .hero p {
+      max-width: 46ch;
+      color: var(--mute);
+      font-size: 21px;
+      margin: 0 0 38px
+    }
+
+    .hero .cta,
+    .contact .cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .mark {
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      width: min(52vw, 560px);
+      transform: translateY(-50%);
+      color: var(--lime);
+      opacity: .9;
+      pointer-events: none
+    }
+
+    .mark svg {
+      width: 100%;
+      height: auto;
+      display: block
+    }
+
+    .mark .c {
+      transform-box: fill-box;
+      transform-origin: center
+    }
+
+    .hero .wrap {
+      position: relative
+    }
+
+    @media (max-width:820px) {
+      .mark {
+        opacity: .14;
+        right: -120px;
+        width: 420px
+      }
+
+      nav a:not(.btn) {
+        display: none
+      }
+    }
+
+    @media (prefers-reduced-motion:no-preference) {
+      .mark .c {
+        animation: settle 1.4s cubic-bezier(.2, .7, .2, 1) both
+      }
+
+      .mark .c:nth-child(2) {
+        animation-delay: .12s
+      }
+
+      .mark .c:nth-child(3) {
+        animation-delay: .24s
+      }
+
+      .mark .c:nth-child(4) {
+        animation-delay: .36s
+      }
+
+      @keyframes settle {
+        from {
+          opacity: 0;
+          transform: translateY(30px) rotate(25deg)
+        }
+      }
+    }
+
+    .band {
+      background: var(--bg2);
+      border-block: 1px solid var(--line);
+      padding: 30px 0
+    }
+
+    .band .wrap {
+      display: flex;
+      gap: 18px 48px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      color: var(--mute);
+      font-size: 17px
+    }
+
+    .band b {
+      color: var(--ink);
+      font-weight: 500
+    }
+
+    section {
+      padding: 110px 0
+    }
+
+    h2 {
+      font: 800 clamp(34px, 4.6vw, 56px)/1.02 var(--head);
+      letter-spacing: -.04em;
+      margin: 0 0 20px;
+      max-width: 16ch
+    }
+
+    .lede {
+      color: var(--mute);
+      max-width: 52ch;
+      margin: 0 0 56px;
+      font-size: 20px
+    }
+
+    .rows {
+      border-top: 1px solid var(--line)
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+      gap: 20px 56px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .row h3 {
+      font: 800 30px/1.1 var(--head);
+      letter-spacing: -.03em;
+      margin: 0 0 6px
+    }
+
+    .row .tag {
+      color: var(--lime);
+      font-size: 16px
+    }
+
+    .row p {
+      margin: 0 0 14px;
+      color: var(--mute)
+    }
+
+    .row ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .row li {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 15px;
+      font-size: 15px
+    }
+
+    @media (max-width:820px) {
+      .row {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      counter-reset: s;
+      border-top: 1px solid var(--line)
+    }
+
+    .steps div {
+      padding: 30px 26px 10px 0
+    }
+
+    .steps div::before {
+      counter-increment: s;
+      content: counter(s);
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--lime);
+      color: var(--on-lime);
+      font: 800 17px var(--head);
+      margin-bottom: 18px
+    }
+
+    .steps h4 {
+      font: 800 21px/1.2 var(--head);
+      letter-spacing: -.02em;
+      margin: 0 0 8px
+    }
+
+    .steps p {
+      margin: 0;
+      color: var(--mute);
+      font-size: 17px
+    }
+
+    @media (max-width:900px) {
+      .steps {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media (max-width:520px) {
+      .steps {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .alt {
+      background: var(--bg2);
+      border-block: 1px solid var(--line)
+    }
+
+    .sectors {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 40px
+    }
+
+    .sectors div {
+      padding: 24px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .sectors h4 {
+      font: 800 22px/1.2 var(--head);
+      letter-spacing: -.02em;
+      margin: 0 0 4px
+    }
+
+    .sectors p {
+      margin: 0;
+      color: var(--mute);
+      font-size: 17px
+    }
+
+    @media (max-width:820px) {
+      .sectors {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .contact h2 {
+      max-width: 14ch
+    }
+
+    .contact .lede {
+      margin-bottom: 36px
+    }
+
+    footer {
+      padding: 36px 0 44px;
+      color: var(--mute);
+      font-size: 15px
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center
+    }
+  </style>
+</head>
+
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="cowrie" viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M30 3C14 3 4 22 4 42s10 35 26 35 26-15 26-35S46 3 30 3z" />
+      <path d="M30 6C23 24 37 36 30 50S24 66 30 74" />
+      <path
+        d="M24 15l6 3M24 25l6 3M26 35l5 3M27 45l4 3M26 55l5 3M26 65l5 3M36 15l-6 3M36 25l-6 3M36 35l-5 3M34 45l-4 3M35 55l-5 3M35 65l-5 3" />
+    </symbol>
+  </svg>
+
+  <header>
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label="Segíri Capital home">
+        <svg viewBox="0 0 60 80">
+          <use href="#cowrie" />
+        </svg>
+        <span class="word">Segíri<small>Capital</small></span>
+      </a>
+      <nav aria-label="Main">
+        <a href="#what">What we do</a><a href="#how">How we work</a><a href="#focus">Focus</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="wrap">
+        <h1>We build, back and advise startups.</h1>
+        <p>Segíri Capital is a venture studio, startup advisory and early-stage venture fund. We work with founders from
+          the first idea to the first cheque to the first thousand customers.</p>
+        <div class="cta"><a class="btn" href="#contact">Pitch us</a><a class="btn ghost" href="#what">See what we do</a>
+        </div>
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 150 190">
+            <g class="c">
+              <use href="#cowrie" x="4" y="6" width="62" height="83" transform="rotate(-8 35 47)" />
+            </g>
+            <g class="c">
+              <use href="#cowrie" x="84" y="4" width="62" height="83" transform="rotate(8 115 45)" />
+            </g>
+            <g class="c">
+              <use href="#cowrie" x="2" y="100" width="62" height="83" transform="rotate(8 33 141)" />
+            </g>
+            <g class="c">
+              <use href="#cowrie" x="86" y="102" width="62" height="83" transform="rotate(-8 117 143)" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="band">
+      <div class="wrap">
+        <span><b>Venture studio.</b> We co-found companies.</span>
+        <span><b>Advisory.</b> We sharpen yours.</span>
+        <span><b>Venture capital.</b> We fund the best.</span>
+      </div>
+    </div>
+
+    <section id="what">
+      <div class="wrap">
+        <h2>Three ways to work with us</h2>
+        <p class="lede">Each one stands alone. Together they give a founder a partner at every stage.</p>
+        <div class="rows">
+          <div class="row">
+            <div>
+              <h3>Venture Studio</h3><span class="tag">For ideas that need a team</span>
+            </div>
+            <div>
+              <p>We identify real problems, assemble founding teams and build new companies from zero. Our product,
+                engineering, design and growth people work inside each venture until it can stand without us.</p>
+              <ul>
+                <li>Idea validation</li>
+                <li>MVP build</li>
+                <li>Founder matching</li>
+                <li>Shared services</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <h3>Startup Advisory</h3><span class="tag">For founders who need a sparring partner</span>
+            </div>
+            <div>
+              <p>Hands-on support on the questions that decide a company: strategy, pricing, go-to-market, hiring, unit
+                economics and fundraising. Short sprints or long retainers, always with a written plan.</p>
+              <ul>
+                <li>Go-to-market</li>
+                <li>Financial modelling</li>
+                <li>Investor readiness</li>
+                <li>Operating cadence</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <h3>Venture Capital</h3><span class="tag">For companies ready to scale</span>
+            </div>
+            <div>
+              <p>We invest at pre-seed and seed and reserve capital to follow our winners. We back founders early, join
+                the board when it helps and open our network when it matters.</p>
+              <ul>
+                <li>Pre-seed</li>
+                <li>Seed</li>
+                <li>Follow-on reserves</li>
+                <li>Portfolio support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="alt">
+      <div class="wrap">
+        <h2>How a venture grows with us</h2>
+        <p class="lede">Our three arms hand off to each other, so a company never starts over with a new set of people.
+        </p>
+        <div class="steps">
+          <div>
+            <h4>Explore</h4>
+            <p>We test a problem with customers before writing a line of code.</p>
+          </div>
+          <div>
+            <h4>Build</h4>
+            <p>The studio team ships a first product and finds early users.</p>
+          </div>
+          <div>
+            <h4>Advise</h4>
+            <p>We tighten the model, the pitch and the plan to grow.</p>
+          </div>
+          <div>
+            <h4>Fund</h4>
+            <p>We invest, and keep working alongside the founders.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus">
+      <div class="wrap">
+        <h2>Where we look</h2>
+        <p class="lede">We favour markets where technology removes a daily friction for many people.</p>
+        <div class="sectors">
+          <div>
+            <h4>Fintech</h4>
+            <p>Payments, credit and savings for people and small businesses.</p>
+          </div>
+          <div>
+            <h4>Commerce and logistics</h4>
+            <p>Getting goods to the people and shops that need them.</p>
+          </div>
+          <div>
+            <h4>Agriculture</h4>
+            <p>Better yields, fair prices and reliable supply chains.</p>
+          </div>
+          <div>
+            <h4>Health</h4>
+            <p>Access, records and affordable care.</p>
+          </div>
+          <div>
+            <h4>Climate and energy</h4>
+            <p>Power that is cleaner, cheaper and always on.</p>
+          </div>
+          <div>
+            <h4>Enterprise software</h4>
+            <p>Tools that help local companies run better.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact alt">
+      <div class="wrap">
+        <h2>Building something? Let’s talk.</h2>
+        <p class="lede">Send us a short note on what you are working on and what you need. We reply to every founder.
+        </p>
+        <div class="cta"><a class="btn" href="mailto:hello@segiri.capital">hello@segiri.capital</a><a class="btn ghost"
+            href="mailto:hello@segiri.capital?subject=Advisory%20enquiry">Book an advisory call</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="#top"><svg viewBox="0 0 60 80" style="width:26px;height:26px">
+          <use href="#cowrie" />
+        </svg><span class="word" style="font-size:19px">Segíri<small>Capital</small></span></a>
+      <span>© 2026 Segíri Capital. All rights reserved.</span>
+    </div>
+  </footer>
+</body>
+
+</html>
